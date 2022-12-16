@@ -1,0 +1,8 @@
+@app.on_message(filters.command("date", prefixes='/'))
+def date(_, msg):
+ msg.edit(f" Успешно обновилось время в профиле")                 #time on nickname
+ while True:
+   Hour = int(datetime.datetime.now().strftime("%H"))
+   Minute = datetime.datetime.now().strftime("%M")
+   app.update_profile(last_name=f"| {Hour}:{Minute} ᵗⁱᵐᵉ")
+   sleep(30)
