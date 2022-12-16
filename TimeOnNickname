@@ -1,3 +1,5 @@
+utc = arrow.utcnow()                           #Ukraine Time
+local = utc.to('UTC+2')
 @app.on_message(filters.command("date", prefixes='/'))
 def date(_, msg):
  msg.edit(f" Успешно обновилось время в профиле")                 #time on nickname
