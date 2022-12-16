@@ -1,0 +1,9 @@
+@app.on_message(filters.command("chat_info", prefixes='/') )
+def chat_info(_, msg):
+            groupinfo=(f"**Информация о чате:**\n"
+             f"**Название** :  {msg.chat.title}\n"
+             f"**Описание** {app.get_chat(msg.chat.id).description}\n\n"
+             f"**Айди:**  `{msg.chat.id}`\n"
+             f"**Текущий онлайн:** {app.get_chat_online_count(msg.chat.id)}\n"
+             f"**Всего участников** {app.get_chat_members_count(msg.chat.id)}")
+            app.send_message(chat_id=msg.chat.id, text=groupinfo, reply_to_message_id=msg.id)
