@@ -1,0 +1,22 @@
+@app.on_message(filters.command('w', prefixes='/') )
+def weather(_, msg):
+    sity = msg.text.split("/w ", maxsplit=1)[1]
+
+    observation = mgr.weather_at_place(sity)
+    w = observation.weather
+    ds = w.detailed_status
+    wind = w.wind()
+    vlaga = w.humidity
+    temp = w.temperature('celsius')['temp']
+    rain = w.rain
+    clouds = w.clouds
+
+    weather = f"""Weather in {sity}:
+🌅 Статус: {str(ds)}\n
+🍃 Ветер: {str(wind["speed"])}m/s, {str(wind["deg"])}°\n
+💦 Влажность: {str(vlaga)}
+🌡 Температура: {str(temp)} °C\n
+🌦 дождь: {str(rain)}\n
+☁Облака: {str(clouds)}
+🗓 Дата проверки: - {time.asctime()}\n"""
+    app.send_message(chat_id=msg.chat.id, text=weather, reply_to_message_id=msg.id)
