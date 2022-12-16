@@ -1,0 +1,18 @@
+@app.on_message(filters.command('check', prefixes='/') & filters.me)
+def det_info(_, msg):
+
+
+    if msg.reply_to_message.from_user.username is None:
+         msg.edit(
+            f"Name - {msg.reply_to_message.from_user.first_name} {msg.reply_to_message.from_user.last_name}\nID - {msg.reply_to_message.from_user.id}\n \n   f'🗓 Дата проверки: - {time.asctime()}\n' ")
+
+    if msg.reply_to_message.from_user.last_name is None:
+        msg.edit(
+            f"💼 Ник- {msg.reply_to_message.from_user.first_name}\n🆔 ID: - {msg.reply_to_message.from_user.id}\nUsername - @{msg.reply_to_message.from_user.username} \n🗓 Дата проверки: - {time.asctime()}\n")
+
+    else:
+        msg.edit(f"💼 Ник: -  {msg.reply_to_message.from_user.first_name} {msg.reply_to_message.from_user.last_name}\n"
+                 f"🆔 ID:  - <code>{msg.reply_to_message.from_user.id}</code>\n"
+                 f"Username - @{msg.reply_to_message.from_user.username}\n"
+                 f"🗓 Дата проверки: - {time.asctime()}\n"
+                 )
