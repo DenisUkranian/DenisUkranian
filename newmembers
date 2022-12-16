@@ -1,0 +1,3 @@
+@app.on_message(filters.new_chat_members)
+async def welcome(client, msg):
+    await msg.reply_text(f'Новый пользователь в группе, и зовут его:{msg.from_user.first_name}!')
