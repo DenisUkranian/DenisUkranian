@@ -1,0 +1,5 @@
+wikipedia.set_lang("ru")
+@app.on_message(filters.command('wiki', prefixes='/') )
+def wiki_py(_, msg):
+    wiki_r = msg.text.replace("/wiki ", "")
+    app.send_message(chat_id=msg.chat.id, text=(f"Информация о {wiki_r}:\n{wikipedia.summary(wiki_r, 7)}"), reply_to_message_id=msg.id)
